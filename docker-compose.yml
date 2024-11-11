@@ -1,6 +1,6 @@
 services:
   arch-wine-fs25:
-    image: luxxy-gf/arch-wine-fs25:latest
+    image: luxxygf/arch-wine-fs25:latest
     container_name: arch-wine-fs25
     environment:
       - VNC_PASSWORD=<your vnc password>
