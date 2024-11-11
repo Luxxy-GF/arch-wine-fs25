@@ -1,4 +1,4 @@
-FROM arch-wine-vnc:latest
+FROM luxxygf/arch-wine-vnc:latest
 
 # additional files
 ##################
