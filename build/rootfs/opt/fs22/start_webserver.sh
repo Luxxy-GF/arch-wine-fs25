@@ -1,13 +1,13 @@
 #!/bin/bash
 
 export WINEDEBUG=-all
-export WINEPREFIX=~/.fs22server
+export WINEPREFIX=~/.fs25server
 
 # Start the server
 
-if [ -f ~/.fs22server/drive_c/Program\ Files\ \(x86\)/Farming\ Simulator\ 2022/dedicatedServer.exe ]
+if [ -f ~/.fs25server/drive_c/Program\ Files\ \(x86\)/Farming\ Simulator\ 2025/dedicatedServer.exe ]
 then
-    wine ~/.fs22server/drive_c/Program\ Files\ \(x86\)/Farming\ Simulator\ 2022/dedicatedServer.exe
+    wine ~/.fs25server/drive_c/Program\ Files\ \(x86\)/Farming\ Simulator\ 2025/dedicatedServer.exe
 else
     echo "Game not installed?" && exit
 fi

@@ -1,7 +1,7 @@
 # Farming Simulator 22 Docker Server
 
 Dedicated Farming Simulator 22 server running inside a docker image based on ArchLinux. 
-This project is hosted at https://github.com/wine-gameservers/arch-wine-fs22/
+This project is hosted at https://github.com/wine-gameservers/arch-wine-fs25/
 
 ## Table of contents
 <!-- vim-markdown-toc GFM -->
@@ -80,9 +80,9 @@ The primary distinction between `docker run` and `docker-compose` is that `docke
 ### Docker compose
 ```
 services:
-  arch-wine-fs22:
-    image: toetje585/arch-wine-fs22:latest
-    container_name: arch-wine-fs22
+  arch-wine-fs25:
+    image: toetje585/arch-wine-fs25:latest
+    container_name: arch-wine-fs25
     environment:
       - VNC_PASSWORD=<your vnc password>
       - WEB_USERNAME=<dedicated server portal username>
@@ -103,10 +103,10 @@ services:
       - PGID=<PGID from user>
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /opt/fs22/config:/opt/fs22/config
-      - /opt/fs22/game:/opt/fs22/game
-      - /opt/fs22/dlc:/opt/fs22/dlc
-      - /opt/fs22/installer:/opt/fs22/installer
+      - /opt/fs25/config:/opt/fs25/config
+      - /opt/fs25/game:/opt/fs25/game
+      - /opt/fs25/dlc:/opt/fs25/dlc
+      - /opt/fs25/installer:/opt/fs25/installer
     ports:
       - 5900:5900/tcp
       - 8080:8080/tcp
@@ -120,17 +120,17 @@ services:
 ### Docker run
 ```
 $ docker run -d \
-    --name arch-wine-fs22 \
+    --name arch-wine-fs25 \
     -p 5900:5900/tcp \
     -p 8080:8080/tcp \
     -p 9000:9000/tcp \
     -p 10823:10823/tcp \
     -p 10823:10823/udp \
     -v /etc/localtime:/etc/localtime:ro \
-    -v /opt/fs22/installer:/opt/fs22/installer \
-    -v /opt/fs22/config:/opt/fs22/config \
-    -v /opt/fs22/game:/opt/fs22/game \
-    -v /opt/fs22/dlc:/opt/fs22/dlc \
+    -v /opt/fs25/installer:/opt/fs25/installer \
+    -v /opt/fs25/config:/opt/fs25/config \
+    -v /opt/fs25/game:/opt/fs25/game \
+    -v /opt/fs25/dlc:/opt/fs25/dlc \
     -e VNC_PASSWORD="<your vnc password>" \
     -e WEB_USERNAME="<dedicated server portal username>" \
     -e WEB_PASSWORD="<dedicated server portal password>" \
@@ -148,7 +148,7 @@ $ docker run -d \
     -e SERVER_CROSSPLAY="true" \
     -e PUID=<UID from user> \
     -e PGID=<PGID from user> \
-    toetje585/arch-wine-fs22
+    toetje585/arch-wine-fs25
 ```
 # Installation
 
@@ -170,12 +170,12 @@ The DLC files are often just an .exe executable you can download them, we move t
 
 To ensure that the installation remains intact even if you remove or update the Docker container, it is important to configure specific directories on the host side. A common practice is to place these directories in `/opt`, although you can choose any other preferred mount point according to your needs and preferences.
 
-`$sudo mkdir -p /opt/fs22/{config,game,installer,dlc}`
+`$sudo mkdir -p /opt/fs25/{config,game,installer,dlc}`
 
 To enable read and write access for the user account configured in the compose file (PUID/PGID), we need to ensure that the Docker container can interact with the designated directory. This can be achieved by executing the following command, which grants the necessary permissions:
 
 ```bash
-sudo chown -R myuser:mygroup /opt/fs22
+sudo chown -R myuser:mygroup /opt/fs25
 ```
 
 Replace `<myuser>` with the appropriate user and `<mygroup>` with the users primary group (often the same as `<myuser>` if unsure use the id command below).
@@ -206,15 +206,15 @@ Example:
 
 ## Unpack and move the installer
 
-You should now unpack the installer and place the unzipped files inside the */your/path/fs22/installer* directory, all dlc should be placed in the */your/path/fs22/dlc* directory. If we start the docker container those directories will be mapped inside the container hence making them available for installation.
+You should now unpack the installer and place the unzipped files inside the */your/path/fs25/installer* directory, all dlc should be placed in the */your/path/fs25/dlc* directory. If we start the docker container those directories will be mapped inside the container hence making them available for installation.
 
 *Note: left mounth paths are on the host machine, the right mount path is inside the docker image and should be left untouched*
 
 ```
-- /your/path/fs22/installer:/opt/fs22/installer
-- /your/path/fs22/config:/opt/fs22/config
-- /your/path/fs22/game:/opt/fs22/game
-- /your/path/fs22/dlc:/opt/fs22/dlc
+- /your/path/fs25/installer:/opt/fs25/installer
+- /your/path/fs25/config:/opt/fs25/config
+- /your/path/fs25/game:/opt/fs25/game
+- /your/path/fs25/dlc:/opt/fs25/dlc
 ```
 
 ## Starting the container

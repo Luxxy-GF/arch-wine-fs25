@@ -17,19 +17,19 @@ jobs:
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_WINE_ARCH_FS22 }}
+          password: ${{ secrets.DOCKERHUB_WINE_ARCH_fs25 }}
       -
         name: Build and push
         uses: docker/build-push-action@v4
         with:
           context: .
           push: true
-          tags: toetje585/arch-wine-fs22:latest
+          tags: luxxygf/arch-wine-fs25:latest
       -
         name: Sync readme
         uses: ms-jpq/sync-dockerhub-readme@v1
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_WINE_ARCH_FS22 }}
-          repository: toetje585/arch-wine-fs22
+          password: ${{ secrets.DOCKERHUB_WINE_ARCH_fs25 }}
+          repository: luxxygf/arch-wine-fs25
           readme: "./README.md"

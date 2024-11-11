@@ -1,6 +1,4 @@
-FROM toetje585/arch-wine-vnc:latest
-LABEL org.opencontainers.image.authors = "Toetje585"
-LABEL org.opencontainers.image.source = "https://github.com/wine-gameservers/arch-wine-vnc"
+FROM arch-wine-vnc:latest
 
 # additional files
 ##################
@@ -16,10 +14,10 @@ ADD build/install.sh /root/install.sh
 ##################
 RUN chmod +x /root/install.sh && /bin/bash /root/install.sh
 
-# Expose port for FS22 Webserver
+# Expose port for fs25 Webserver
 
 EXPOSE 8080/tcp
 
-# Expose port for the FS22 Gameserver
+# Expose port for the fs25 Gameserver
 EXPOSE 10823/tcp
 EXPOSE 10823/udp
