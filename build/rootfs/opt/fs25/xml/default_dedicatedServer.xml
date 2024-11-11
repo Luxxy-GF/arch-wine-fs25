@@ -5,7 +5,7 @@
             <username>admin</username>
             <passphrase>webpassword</passphrase>
         </initial_admin>
-        <tls port="8443" active="false">
+        <tls port="8443" active="true">
             <certificate>cert.pem</certificate>
             <privatekey>pk.pem</privatekey>
             <intermediateCertificates>
@@ -14,7 +14,7 @@
             </intermediateCertificates>
         </tls>
     </webserver>
-    <game description="Farming Simulator 22" name="FarmingSimulator2025" exe="FarmingSimulator2025Game.exe">
+    <game description="Farming Simulator 25" name="FarmingSimulator2025" exe="FarmingSimulator2025Game.exe">
         <imprint active="false"><![CDATA[
             <b>Sample Imprint Title</b><br>
             <br>
