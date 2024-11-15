@@ -5,7 +5,7 @@ set -e
 # needed packages
 
 echo "[info] Installing packages currently not installed..."
-pacman -Syu --noconfirm && pacman -S nginx-mainline --noconfirm
+pacman -Syu --noconfirm && pacman -Syu --noconfirm nginx-mainline
 
 # create file with contents of here doc, note EOF is NOT quoted to allow us to expand current variable 'install_paths'
 # we use escaping to prevent variable expansion for PUID and PGID, as we want these expanded at runtime of init.sh
@@ -89,3 +89,4 @@ rm /tmp/envvars_heredoc
 
 ln -s /opt/fs25/setup_giants.sh /home/nobody/setup_giants.sh
 ln -s /opt/fs25/start_webserver.sh /home/nobody/start_webserver.sh
+ln -s /opt/fs25/setup_steam.sh /home/nobody/setup_steam.sh
